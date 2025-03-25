@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:muhajir_quran/app/home/model/quran_detail_model.dart';
 import 'package:muhajir_quran/app/home/model/quran_model.dart';
 import 'package:muhajir_quran/app/home/repository/home_data_source.dart';
@@ -11,18 +13,19 @@ class HomeRepository extends BaseRepository {
   HomeRepository(this._dataSource);
 
   void getQuranList(
-      {required ResponseHandler<QuranModel?> response}) async {
+      {required ResponseHandler<List<QuranModel>?> response}) async {
     try {
-      final data = await _dataSource
-          .apiHomeList()
-          .then(mapToData)
-          .then((value) {
-        final response = QuranModel.fromJson(value);
-        return response;
-      });
-      response.onSuccess.call(data);
+      final data = await _dataSource.apiHomeList();
+
+      // Pastikan data berupa List dan lakukan mapping ke QuranModel
+      final List<QuranModel> list = (data as List)
+          .map((json) => QuranModel.fromJson(json))
+          .toList();
+
+      response.onSuccess.call(list);
       response.onDone.call();
-    } catch (e, _) {
+    } catch (e, data) {
+      log("cek error " + e.toString() + " " + data.toString());
       response.onFailed(e, e.toString());
       response.onDone.call();
     }

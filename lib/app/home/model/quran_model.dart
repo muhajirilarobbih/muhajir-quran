@@ -41,4 +41,8 @@ class QuranModel {
     data['audio'] = audio;
     return data;
   }
+
+  static List<QuranModel> fromListJson(List listJson) {
+    return listJson.map((t) => QuranModel.fromJson(t)).toList();
+  }
 }
