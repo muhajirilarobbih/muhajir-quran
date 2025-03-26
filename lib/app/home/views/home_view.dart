@@ -36,9 +36,22 @@ class HomeView extends GetView<HomeController> {
                   const SizedBox(
                     height: 10,
                   ),
+
                   Expanded(
-                      child: controller.itemQuran == null || controller.itemQuran!.isEmpty
-                          ? const Center(child: CircularProgressIndicator()) // Tampilkan loading jika data belum ada
+                      child: controller.itemQuran.isEmpty
+                          ?
+                      ListView.builder(
+                          controller: controller.scrollController,
+                          itemCount: 4,
+                          shrinkWrap: true,
+                          physics: const BouncingScrollPhysics(),
+                          itemBuilder: (context, index) {
+                            return Skeletonizer(
+                              enabled: true,
+                              child: itemQuranList(context, controller.filteredSurahs.elementAtOrNull(0),0),
+                            );
+                          })
+                       // Tampilkan loading jika data belum ada
                           : ListView.builder(
                           controller: controller.scrollController,
                           itemCount: controller.itemQuran!.length,
@@ -49,7 +62,7 @@ class HomeView extends GetView<HomeController> {
                                 controller.filteredSurahs.elementAtOrNull(index);
                             return Skeletonizer(
                               enabled: item == null,
-                              child: itemQuranList(context, item),
+                              child: itemQuranList(context, item,index),
                             );
                           }))
                 ],
@@ -59,21 +72,32 @@ class HomeView extends GetView<HomeController> {
         }));
   }
 
-  Widget itemQuranList(BuildContext context, QuranModel? data) {
+  Widget itemQuranList(BuildContext context, QuranModel? data,int page) {
     return buildSurahTile(
         "${data?.namaLatin} (${data?.jumlahAyat} Ayat)",
         data?.arti ?? "",
         data?.nama ?? "",
-        data?.nomor.toString() ?? ""
+        data?.nomor.toString() ?? "",
+        page,
+        data?.nomor ?? 0,
     ) ;
   }
 
-  Widget buildSurahTile(String title, String subtitle, String arabic,String no) {
+  Widget buildSurahTile(
+      String title,
+      String subtitle,
+      String arabic,
+      String no,
+      int page,
+      int noSurat) {
     return Card(
       shadowColor: Colors.green,
       child: ListTile(
         focusColor: Colors.green,
         hoverColor: Colors.green,
+        onTap: () {
+          controller.toDetailQuran(page,noSurat);
+        },
         leading: Text(no,style: const TextStyle(fontWeight: FontWeight.bold ,fontSize: 20)),
         title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold ,color: Colors.green)),
         subtitle: Text(subtitle),

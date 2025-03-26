@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:muhajir_quran/app/home/model/quran_detail_model.dart';
@@ -25,25 +26,25 @@ class HomeRepository extends BaseRepository {
       response.onSuccess.call(list);
       response.onDone.call();
     } catch (e, data) {
-      log("cek error " + e.toString() + " " + data.toString());
+      log("cek error $e $data");
       response.onFailed(e, e.toString());
       response.onDone.call();
     }
   }
   void getQuranDetail(
       {required String noSurah,
-        required ResponseHandler<QuranDetailModel?> response}) async {
+        required ResponseHandler<QuranDetailModel> response}) async {
     try {
-      final data = await _dataSource
-          .apiHomeDetail(noSurah)
+      final dataDetail = await _dataSource.apiHomeDetail(noSurah)
           .then(mapToData)
           .then((value) {
         final response = QuranDetailModel.fromJson(value);
         return response;
       });
-      response.onSuccess.call(data);
+      response.onSuccess.call(dataDetail);
       response.onDone.call();
-    } catch (e, _) {
+    } catch (e, data) {
+      log("cek error $e $data");
       response.onFailed(e, e.toString());
       response.onDone.call();
     }
