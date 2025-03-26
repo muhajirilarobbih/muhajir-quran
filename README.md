@@ -1,68 +1,67 @@
-Quran Player App
+# Quran Player App
 
-Description
+## Description
 
-This application is built with Flutter using GetX as the state management solution. It provides an intuitive interface for users to search and play Al-Qur'an recitations with playback control and progress tracking.
+This application is built with **Flutter** using **GetX** as the state management solution. It provides an intuitive interface for users to search and play Al-Qur'an recitations with playback control and progress tracking.
 
-Required Functionality
+## Required Functionality
 
-🔍 Search
+### 🔍 Search
 
-Allows users to search for Al-Qur'an by Surah.
+- Allows users to search for Al-Qur'an by Surah.
 
-🎵 Playback Control
+### 🎵 Playback Control
 
-Implements standard playback functions: play, pause, resume.
+- Implements standard playback functions: **play, pause, resume**.
 
-⏳ Progress Display
+### ⏳ Progress Display
 
-Displays the total duration of the Surah.
+- Displays the **total duration** of the Surah.
+- Shows the **current playback position** using a progress bar.
 
-Shows the current playback position using a progress bar.
+### ⏩ Seeking
 
-⏩ Seeking
+- Enables users to **navigate** through the Surah using a **slider**.
 
-Enables users to navigate through the Surah using a slider.
+### 🧪 Automation Testing
 
-🧪 Automation Testing
+- Uses **Mockito** for unit and widget testing to ensure reliability and robustness.
 
-Uses Mockito for unit and widget testing to ensure reliability and robustness.
+## Technologies Used
 
-Technologies Used
+- **Flutter**
+- **GetX** (State Management)
+- **Mockito** (Testing)
+- **Audio Player Package**
 
-Flutter
+## Installation
 
-GetX (State Management)
+1. Clone this repository:
+   ```sh
+   git clone https://github.com/your-repo/quran-player.git
+   ```
+2. Navigate to the project folder:
+   ```sh
+   cd quran-player
+   ```
+3. Install dependencies:
+   ```sh
+   flutter pub get
+   ```
+4. Run the application:
+   ```sh
+   flutter run
+   ```
 
-Mockito (Testing)
-
-Audio Player Package
-
-Installation
-
-Clone this repository:
-
-git clone https://github.com/your-repo/quran-player.git
-
-Navigate to the project folder:
-
-cd quran-player
-
-Install dependencies:
-
-flutter pub get
-
-Run the application:
-
-flutter run
-
-Testing
+## Testing
 
 To run automated tests using Mockito:
 
+```sh
 flutter test
+```
 
-License
+## License
 
 This project is licensed under the MIT License. created by Muhajir ila robbih
 
