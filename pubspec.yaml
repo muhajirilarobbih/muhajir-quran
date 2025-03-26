@@ -47,6 +47,8 @@ dependencies:
   skeletonizer: ^1.4.2
   just_audio: ^0.9.36
   scrollable_positioned_list: ^0.3.8
+  mockito: ^5.4.2
+  build_runner: ^2.4.6
 
 
   # The following adds the Cupertino Icons font to your application.
