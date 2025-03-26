@@ -54,7 +54,7 @@ class HomeView extends GetView<HomeController> {
                        // Tampilkan loading jika data belum ada
                           : ListView.builder(
                           controller: controller.scrollController,
-                          itemCount: controller.itemQuran!.length,
+                          itemCount: controller.itemQuran.length,
                           shrinkWrap: true,
                           physics: const BouncingScrollPhysics(),
                           itemBuilder: (context, index) {

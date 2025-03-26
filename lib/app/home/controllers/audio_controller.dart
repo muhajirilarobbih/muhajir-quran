@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
 
@@ -18,7 +20,7 @@ class AudioController extends GetxController {
         currentSurah.value = surahName;
       }
     } catch (e) {
-      print("Error playing audio: $e");
+      log("Error playing audio: $e");
     }
   }
 

@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:muhajir_quran/app/home/model/quran_detail_model.dart';
