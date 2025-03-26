@@ -9,8 +9,8 @@ class QuranDetailModel {
   String? deskripsi;
   String? audio;
   List<Ayat>? ayat;
-  SuratSelanjutnya? suratSelanjutnya;
-  bool? suratSebelumnya;
+  // SuratSelanjutnya? suratSelanjutnya;
+  // bool? suratSebelumnya;
 
   QuranDetailModel(
       {status,
@@ -22,12 +22,10 @@ class QuranDetailModel {
         arti,
         deskripsi,
         audio,
-        ayat,
-        suratSelanjutnya,
-        suratSebelumnya});
+        ayat});
 
   QuranDetailModel.fromJson(Map<String, dynamic> json) {
-    status = json['status'];
+    status = json['status'] is bool? ? json['status'] : null;
     nomor = json['nomor'];
     nama = json['nama'];
     namaLatin = json['nama_latin'];
@@ -42,10 +40,10 @@ class QuranDetailModel {
         ayat!.add(Ayat.fromJson(v));
       });
     }
-    suratSelanjutnya = json['surat_selanjutnya'] != null
-        ? SuratSelanjutnya.fromJson(json['surat_selanjutnya'])
-        : null;
-    suratSebelumnya = json['surat_sebelumnya'];
+    // suratSelanjutnya = json['surat_selanjutnya'] != null
+    //     ? SuratSelanjutnya.fromJson(json['surat_selanjutnya'])
+    //     : null;
+    // suratSebelumnya = json['surat_sebelumnya'] is bool? ? json['surat_sebelumnya'] : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -62,10 +60,10 @@ class QuranDetailModel {
     if (ayat != null) {
       data['ayat'] = ayat!.map((v) => v.toJson()).toList();
     }
-    if (suratSelanjutnya != null) {
-      data['surat_selanjutnya'] = suratSelanjutnya!.toJson();
-    }
-    data['surat_sebelumnya'] = suratSebelumnya;
+    // if (suratSelanjutnya != null) {
+    //   data['surat_selanjutnya'] = suratSelanjutnya!.toJson();
+    // }
+    // data['surat_sebelumnya'] = suratSebelumnya;
     return data;
   }
 }
