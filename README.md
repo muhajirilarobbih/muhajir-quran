@@ -38,7 +38,7 @@ This application is built with **Flutter** using **GetX** as the state managemen
 
 1. Clone this repository:
    ```sh
-   git clone https://github.com/muhajirilarobbih/muhajir-quran.git
+   https://github.com/muhajirilarobbih/muhajir-quran.git
    ```
 2. Navigate to the project folder:
    ```sh
@@ -53,6 +53,20 @@ This application is built with **Flutter** using **GetX** as the state managemen
    flutter run
    ```
 
+## Screenshots
+
+### 📌 Home Screen
+
+![Home Screen](assets/sc1.png)
+
+### 📌 Surah Playback - Al-Fatihah
+
+![Surah Playback - Al-Fatihah](assets/sc2.png)
+
+### 📌 Surah Playback - Al-Baqarah
+
+![Surah Playback - Al-Baqarah](assets/sc3.png)
+
 ## Testing
 
 To run automated tests using Mockito:
@@ -63,7 +77,5 @@ flutter test
 
 ## License
 
-This project is licensed under the MIT License. created by Muhajir ila robbih
-linkIn : https://www.linkedin.com/in/muhajir-ila-robbih-a89786a7/
-
+This project is licensed under the MIT License. Created by Muhajir ila Robbih.
 
