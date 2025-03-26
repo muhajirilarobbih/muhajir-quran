@@ -38,11 +38,11 @@ This application is built with **Flutter** using **GetX** as the state managemen
 
 1. Clone this repository:
    ```sh
-   git clone https://github.com/your-repo/quran-player.git
+   git clone https://github.com/muhajirilarobbih/muhajir-quran.git
    ```
 2. Navigate to the project folder:
    ```sh
-   cd quran-player
+   cd muhajir_quran
    ```
 3. Install dependencies:
    ```sh
@@ -64,4 +64,6 @@ flutter test
 ## License
 
 This project is licensed under the MIT License. created by Muhajir ila robbih
+linkIn : https://www.linkedin.com/in/muhajir-ila-robbih-a89786a7/
+
 
