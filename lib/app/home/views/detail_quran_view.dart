@@ -59,6 +59,30 @@ class DetailQuranView extends GetView<HomeController> {
                       },
                     )),
                   ),
+                  Obx(() {
+                    return Column(
+                      children: [
+                        Slider(
+                          min: 0,
+                          max: controller.totalDuration.value.inSeconds.toDouble(),
+                          value: controller.currentPosition.value.inSeconds.toDouble(),
+                          onChanged: (value) {
+                            controller.seekAudio(Duration(seconds: value.toInt()));
+                          },
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text( controller.formatDuration(controller.currentPosition.value)),
+                              Text(controller.formatDuration(controller.totalDuration.value)),
+                            ],
+                          ),
+                        ),
+                      ],
+                    );
+                  }),
                   Expanded(
                     child: Obx(() {
                       if (controller.isLoading.value) {

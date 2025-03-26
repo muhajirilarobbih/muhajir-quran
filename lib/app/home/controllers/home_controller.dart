@@ -28,6 +28,9 @@ class HomeController extends GetxController {
   var isLoading = false.obs; // State untuk loading
   var pageController = PageController();
 
+  Rx<Duration> currentPosition = Duration.zero.obs;
+  Rx<Duration> totalDuration = Duration.zero.obs;
+
   AudioPlayer audioPlayer = AudioPlayer();
   int nomorSurat = 1;
   bool ayahSelected = false;
@@ -47,6 +50,22 @@ class HomeController extends GetxController {
 
   void increment() {
     count++;
+  }
+
+  void seekAudio(Duration position) {
+    audioPlayer.seek(position);
+  }
+
+  void _initAudioListeners() {
+    audioPlayer.durationStream.listen((duration) {
+      if (duration != null) {
+        totalDuration.value = duration;
+      }
+    });
+
+    audioPlayer.positionStream.listen((position) {
+      currentPosition.value = position;
+    });
   }
 
   void filterSurahs(String query) {
@@ -89,6 +108,7 @@ class HomeController extends GetxController {
       );
       showLoading(Get.context!);
     });
+    _initAudioListeners();
   }
 
   void changePage(int index) {
@@ -99,6 +119,13 @@ class HomeController extends GetxController {
       curve: Curves.easeInOut,
     );
     update(); // Perbarui UI
+  }
+
+  String formatDuration(Duration duration) {
+    String twoDigits(int n) => n.toString().padLeft(2, "0");
+    String minutes = twoDigits(duration.inMinutes.remainder(60));
+    String seconds = twoDigits(duration.inSeconds.remainder(60));
+    return "$minutes:$seconds";
   }
 
   void showLoading(BuildContext context) {
